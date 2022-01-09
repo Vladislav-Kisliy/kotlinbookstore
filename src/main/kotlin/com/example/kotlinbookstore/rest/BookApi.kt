@@ -35,7 +35,7 @@ class BookApi(private val bookRepository: BookRepository) {
         val persistedBook = bookRepository.save(book)
         val headers = HttpHeaders()
         headers.setLocation(
-            uri.path("/books/{id}")
+            uri.path("/api/books/{id}")
                 .buildAndExpand(persistedBook.id)
                 .toUri()
         );
