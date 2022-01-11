@@ -42,7 +42,7 @@ class BookApiIntegrationTest(@Autowired val restTemplate: TestRestTemplate) {
 
         val savedBook = restTemplate.getForEntity<Book>(responseEntity.headers.get("Location")!!.get(0))
 
-        val id: Long = savedBook.body!!.id!!
+        val id: Long = savedBook.body!!.id
         val updatedBook =
             Book(id = id, name = Constants.BOOK_NEW_NAME, description = Constants.BOOK_DESCRIPTION, price = BOOK_PRICE)
         restTemplate.put("/api/books/${id}", updatedBook, Book::class.java)
